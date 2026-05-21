@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Học Tiếng Anh Elementary</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        header h1 {
+            color: #2c3e50;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        header p {
+            color: #7f8c8d;
+            font-size: 16px;
+            font-style: italic;
+        }
+        .parts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            border-top: 5px solid #bdc3c7;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .card.active {
+            border-top-color: #3498db;
+        }
+        .card.disabled {
+            background-color: #fbfcfc;
+            opacity: 0.8;
+        }
+        .card h2 {
+            font-size: 20px;
+            margin-top: 0;
+            color: #2c3e50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .badge {
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        .badge.open {
+            background-color: #e8f4fd;
+            color: #3498db;
+        }
+        .badge.lock {
+            background-color: #f2f4f4;
+            color: #7f8c8d;
+        }
+        .card p.description {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .links-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .links-list li {
+            margin-bottom: 12px;
+        }
+        .links-list a {
+            display: block;
+            padding: 12px 15px;
+            background-color: #f8fafc;
+            color: #2980b9;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.2s, color 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+        .links-list a:hover {
+            background-color: #ebf5fb;
+            color: #1a5276;
+            border-color: #aed6f1;
+        }
+        .coming-soon {
+            margin-top: auto;
+            padding: 15px;
+            background-color: #f2f4f4;
+            color: #7f8c8d;
+            text-align: center;
+            border-radius: 6px;
+            font-style: italic;
+            font-size: 14px;
+            border: 1px dashed #bdc3c7;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>HỆ THỐNG TỰ HỌC TIẾNG ANH ELEMENTARY</h1>
+        <p>Chọn các phần bài học dưới đây để bắt đầu ôn tập lý thuyết</p>
+    </header>
+
+    <div class="parts-grid">
+        <!-- PART 1 -->
+        <div class="card active">
+            <h2>Part 1 <span class="badge open">Đã mở</span></h2>
+            <p class="description">Tổng hợp lý thuyết và các dạng bài tập căn bản cho hệ sơ cấp.</p>
+            
+            <ul class="links-list">
+                <li>
+                    <a href="Part_1/test7and8.html">📖 Bài học & Lý thuyết: Test 7 & Test 8</a>
+                </li>
+                <li>
+                    <a href="Part_1/test9and10.html">📖 Bài học & Lý thuyết: Test 9 & Test 10</a>
+                </li>
+                <li>
+                    <a href="Part_1/test11and12.html">📖 Bài học & Lý thuyết: Test 11 & Test 12</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- PART 2 -->
+        <div class="card disabled">
+            <h2>Part 2 <span class="badge lock">Tạm khóa</span></h2>
+            <p class="description">Các chuyên đề ngữ pháp nâng cao và kỹ năng đọc hiểu thực hành.</p>
+            <div class="coming-soon">
+                🔒 Đang phát triển (Coming Soon)
+            </div>
+        </div>
+
+        <!-- PART 3 -->
+        <div class="card disabled">
+            <h2>Part 3 <span class="badge lock">Tạm khóa</span></h2>
+            <p class="description">Hệ thống bài kiểm tra tổng hợp và chuẩn bị cho kỳ thi đánh giá năng lực.</p>
+            <div class="coming-soon">
+                🔒 Đang phát triển (Coming Soon)
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
