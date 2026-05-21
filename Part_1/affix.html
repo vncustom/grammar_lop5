@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học Tiền Tố, Hậu Tố & Gốc Từ Tiếng Anh</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --accent-prefix: #eff6ff;
+            --accent-prefix-text: #1e40af;
+            --accent-suffix: #f0fdf4;
+            --accent-suffix-text: #166534;
+            --accent-root: #faf5ff;
+            --accent-root-text: #6b21a8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Filter Panel */
+        .filter-panel {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .search-row {
+            margin-bottom: 15px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus {
+            border-color: var(--primary);
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .filter-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .filter-select {
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background-color: white;
+            font-size: 0.9rem;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .results-info {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .reset-btn {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: underline;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .affix-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Badge styles by Type */
+        .badge-prefix {
+            background-color: var(--accent-prefix);
+            color: var(--accent-prefix-text);
+        }
+
+        .badge-suffix {
+            background-color: var(--accent-suffix);
+            color: var(--accent-suffix-text);
+        }
+
+        .badge-root {
+            background-color: var(--accent-root);
+            color: var(--accent-root-text);
+        }
+
+        .badge-class {
+            background-color: #f1f5f9;
+            color: #475569;
+        }
+
+        .meaning-box {
+            background-color: #f8fafc;
+            border-left: 3px solid var(--primary);
+            padding: 8px 12px;
+            margin-bottom: 15px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .meaning-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+
+        .meaning-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .group-tag {
+            font-size: 0.8rem;
+            color: var(--primary);
+            background-color: #eff6ff;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .group-tag:hover {
+            text-decoration: underline;
+        }
+
+        .examples-list {
+            list-style: none;
+        }
+
+        .example-item {
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .example-word {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .example-translation {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Practice Section */
+        .practice-container {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .quiz-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .option-btn {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid var(--border);
+            background-color: white;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover {
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        .option-btn.correct {
+            background-color: #d1fae5;
+            border-color: #10b981;
+            color: #065f46;
+        }
+
+        .option-btn.incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+            color: #991b1b;
+        }
+
+        .quiz-feedback {
+            margin-top: 15px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .next-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .next-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Tra cứu Tiền tố, Hậu tố & Gốc từ</h1>
+        <p>Công cụ hỗ trợ học sinh học từ vựng tiếng Anh theo phương pháp tách gốc từ khoa học</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('study')">Tra cứu & Học tập</button>
+        <button class="tab-btn" onclick="switchTab('practice')">Góc Ôn tập (Quiz)</button>
+    </div>
+
+    <!-- STUDY TAB -->
+    <div id="study-tab">
+        <!-- Filter Panel -->
+        <div class="filter-panel">
+            <div class="search-row">
+                <input type="text" id="searchInput" class="search-box" placeholder="Tìm kiếm nhanh (ví dụ: 'un-', 'không', 'happy')...">
+            </div>
+            <div class="filter-grid">
+                <div class="filter-group">
+                    <label for="typeFilter">Loại thành phần</label>
+                    <select id="typeFilter" class="filter-select">
+                        <option value="all">Tất cả</option>
+                        <option value="Tiền tố">Tiền tố (Prefix)</option>
+                        <option value="Hậu tố">Hậu tố (Suffix)</option>
+                        <option value="Gốc từ">Gốc từ (Root)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="classFilter">Loại từ tạo thành</label>
+                    <select id="classFilter" class="filter-select">
+                        <option value="all">Tất cả</option>
+                        <option value="Danh từ">Danh từ (Noun)</option>
+                        <option value="Động từ">Động từ (Verb)</option>
+                        <option value="Tính từ">Tính từ (Adjective)</option>
+                        <option value="Trạng từ">Trạng từ (Adverb)</option>
+                        <option value="Nhiều dạng">Nhiều dạng</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="groupFilter">Nhóm ý nghĩa giống nhau</label>
+                    <select id="groupFilter" class="filter-select">
+                        <option value="all">Tất cả nhóm ý nghĩa</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-info">
+            <span id="resultsCount">Đang tải dữ liệu...</span>
+            <button class="reset-btn" onclick="resetFilters()">Đặt lại bộ lọc</button>
+        </div>
+
+        <!-- Cards Container -->
+        <div class="cards-grid" id="cardsContainer"></div>
+    </div>
+
+    <!-- PRACTICE TAB -->
+    <div id="practice-tab" class="hidden">
+        <div class="practice-container">
+            <h2 style="margin-bottom: 15px; text-align: center;">Trắc nghiệm Ôn tập</h2>
+            <div id="quiz-box">
+                <div class="quiz-question" id="quizQuestion">Câu hỏi sẽ hiển thị ở đây...</div>
+                <div class="quiz-options" id="quizOptions"></div>
+                <div class="quiz-feedback" id="quizFeedback"></div>
+                <button class="next-btn hidden" id="nextBtn" onclick="generateQuestion()">Câu tiếp theo</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Dữ liệu tiền tố, hậu tố và gốc từ
+    const dataset = [
+        {
+            affix: "en-",
+            level: "Cơ bản",
+            wordClass: "Động từ",
+            type: "Tiền tố",
+            meaning: "làm cho hoặc trở nên",
+            group: "Làm cho hoặc trở nên",
+            examples: [
+                { word: "enable", translation: "làm cho có thể" },
+                { word: "encourage", translation: "khuyến khích" },
+                { word: "enrich", translation: "làm giàu" },
+                { word: "encapsulate", translation: "đóng gói" },
+                { word: "enlighten", translation: "làm sáng tỏ" }
+            ]
+        },
+        {
+            affix: "be-",
+            level: "Cơ bản",
+            wordClass: "Động từ",
+            type: "Tiền tố",
+            meaning: "làm cho hoặc trở nên",
+            group: "Làm cho hoặc trở nên",
+            examples: [
+                { word: "befriend", translation: "kết bạn" },
+                { word: "bewitch", translation: "làm mê hoặc" },
+                { word: "belittle", translation: "coi nhẹ" },
+                { word: "besiege", translation: "bao vây" },
+                { word: "befuddle", translation: "làm rối trí" }
+            ]
+        },
+        {
+            affix: "-fy/ -ify",
+            level: "Cơ bản",
+            wordClass: "Động từ",
+            type: "Hậu tố",
+            meaning: "làm cho hoặc trở nên",
+            group: "Làm cho hoặc trở nên",
+            examples: [
+                { word: "magnify", translation: "phóng đại" },
+                { word: "clarify", translation: "làm rõ" },
+                { word: "simplify", translation: "đơn giản hóa" },
+                { word: "identify", translation: "nhận diện" },
+                { word: "justify", translation: "biện minh" }
+            ]
+        },
+        {
+            affix: "-ize",
+            level: "Cơ bản",
+            wordClass: "Động từ",
+            type: "Hậu tố",
+            meaning: "làm cho hoặc trở nên",
+            group: "Làm cho hoặc trở nên",
+            examples: [
+                { word: "modernize", translation: "hiện đại hóa" },
+                { word: "organize", translation: "tổ chức" },
+                { word: "visualize", translation: "hình dung" },
+                { word: "prioritize", translation: "ưu tiên" },
+                { word: "realize", translation: "nhận ra" }
+            ]
+        },
+        {
+            affix: "-en",
+            level: "Cơ bản",
+            wordClass: "Động từ",
+            type: "Hậu tố",
+            meaning: "làm cho hoặc trở nên",
+            group: "Làm cho hoặc trở nên",
+            examples: [
+                { word: "strengthen", translation: "làm mạnh" },
+                { word: "deepen", translation: "làm sâu" },
+                { word: "widen", translation: "làm rộng" },
+                { word: "brighten", translation: "làm sáng" },
+                { word: "shorten", translation: "làm ngắn" }
+            ]
+        },
+        {
+            affix: "-ate",
+            level: "Cơ bản",
+            wordClass: "Động từ",
+            type: "Hậu tố",
+            meaning: "làm cho hoặc trở nên",
+            group: "Làm cho hoặc trở nên",
+            examples: [
+                { word: "activate", translation: "kích hoạt" },
+                { word: "create", translation: "tạo ra" },
+                { word: "educate", translation: "giáo dục" },
+                { word: "regulate", translation: "điều chỉnh" },
+                { word: "approximate", translation: "ước tính" }
+            ]
+        },
+        {
+            affix: "dis-",
+            level: "Cơ bản",
+            wordClass: "Động từ",
+            type: "Tiền tố",
+            meaning: "chỉ những gì phủ định (không chấp nhận, ngắt, biến mất...)",
+            group: "Phủ định, Không, Ngược lại",
+            examples: [
+                { word: "disconnect", translation: "ngắt kết nối" },
+                { word: "disapprove", translation: "không chấp thuận" },
+                { word: "disorder", translation: "rối loạn" },
+                { word: "disadvantage", translation: "bất lợi" },
+                { word: "disappear", translation: "biến mất" }
+            ]
+        },
+        {
+            affix: "re-",
+            level: "Cơ bản",
+            wordClass: "Động từ",
+            type: "Tiền tố",
+            meaning: "làm lại hoặc làm ngược lại",
+            group: "Làm lại, Quay lại",
+            examples: [
+                { word: "redo", translation: "làm lại" },
+                { word: "rebuild", translation: "xây dựng lại" },
+                { word: "rewrite", translation: "viết lại" },
+                { word: "return", translation: "trở lại" },
+                { word: "reconsider", translation: "xem xét lại" }
+            ]
+        },
+        {
+            affix: "mis-",
+            level: "Cơ bản",
+            wordClass: "Động từ",
+            type: "Tiền tố",
+            meaning: "chỉ sự sai trái hoặc không đúng",
+            group: "Sai, Nhầm lẫn, Tệ",
+            examples: [
+                { word: "misunderstand", translation: "hiểu lầm" },
+                { word: "mislead", translation: "làm lạc hướng" },
+                { word: "misplace", translation: "đặt sai chỗ" },
+                { word: "misinform", translation: "thông tin sai lệch" },
+                { word: "mistake", translation: "lỗi" }
+            ]
+        },
+        {
+            affix: "em-",
+            level: "Cơ bản",
+            wordClass: "Động từ",
+            type: "Tiền tố",
+            meaning: "làm cho hoặc trở nên",
+            group: "Làm cho hoặc trở nên",
+            examples: [
+                { word: "empower", translation: "trao quyền" },
+                { word: "embolden", translation: "làm cho can đảm" },
+                { word: "embody", translation: "hiện thân" },
+                { word: "embrace", translation: "ôm lấy, tiếp nhận" },
+                { word: "embellish", translation: "tô điểm" }
+            ]
+        },
+        {
+            affix: "-er/-or",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ người thực hiện hành động hoặc nghề nghiệp",
+            group: "Chỉ người, Nghề nghiệp",
+            examples: [
+                { word: "teacher", translation: "giáo viên" },
+                { word: "actor", translation: "diễn viên" },
+                { word: "driver", translation: "tài xế" },
+                { word: "creator", translation: "người sáng tạo" },
+                { word: "painter", translation: "họa sĩ" }
+            ]
+        },
+        {
+            affix: "-tion",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ hành động, kết quả hoặc trạng thái",
+            group: "Trạng thái, Quá trình, Hành động",
+            examples: [
+                { word: "creation", translation: "sự sáng tạo" },
+                { word: "celebration", translation: "lễ kỷ niệm" },
+                { word: "nation", translation: "quốc gia" },
+                { word: "adaptation", translation: "sự thích nghi" },
+                { word: "production", translation: "sự sản xuất" }
+            ]
+        },
+        {
+            affix: "-ment",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ trạng thái, quá trình hoặc kết quả",
+            group: "Trạng thái, Quá trình, Hành động",
+            examples: [
+                { word: "development", translation: "sự phát triển" },
+                { word: "government", translation: "chính phủ" },
+                { word: "achievement", translation: "thành tựu" },
+                { word: "agreement", translation: "thỏa thuận" },
+                { word: "treatment", translation: "sự điều trị" }
+            ]
+        },
+        {
+            affix: "-sion",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ hành động hoặc trạng thái",
+            group: "Trạng thái, Quá trình, Hành động",
+            examples: [
+                { word: "decision", translation: "quyết định" },
+                { word: "explosion", translation: "sự nổ" },
+                { word: "vision", translation: "tầm nhìn" },
+                { word: "erosion", translation: "sự xói mòn" },
+                { word: "admission", translation: "sự thừa nhận" }
+            ]
+        },
+        {
+            affix: "-ist",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ người thực hành nghề hoặc trường phái",
+            group: "Chỉ người, Nghề nghiệp",
+            examples: [
+                { word: "artist", translation: "nghệ sĩ" },
+                { word: "scientist", translation: "nhà khoa học" },
+                { word: "pianist", translation: "người chơi piano" },
+                { word: "biologist", translation: "nhà sinh vật học" },
+                { word: "dentist", translation: "nha sĩ" }
+            ]
+        },
+        {
+            affix: "-ian",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ người thuộc một lĩnh vực hoặc quốc gia",
+            group: "Chỉ người, Nghề nghiệp",
+            examples: [
+                { word: "musician", translation: "nhạc sĩ" },
+                { word: "librarian", translation: "thủ thư" },
+                { word: "historian", translation: "nhà sử học" },
+                { word: "politician", translation: "chính trị gia" },
+                { word: "physician", translation: "bác sĩ" }
+            ]
+        },
+        {
+            affix: "-ness",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ trạng thái, phẩm chất hoặc tính chất",
+            group: "Trạng thái, Phẩm chất, Tính chất",
+            examples: [
+                { word: "happiness", translation: "hạnh phúc" },
+                { word: "kindness", translation: "lòng tốt" },
+                { word: "darkness", translation: "bóng tối" },
+                { word: "sadness", translation: "nỗi buồn" },
+                { word: "weakness", translation: "sự yếu đuối" }
+            ]
+        },
+        {
+            affix: "-ance/-ence",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ trạng thái, chất lượng hoặc hành động",
+            group: "Trạng thái, Phẩm chất, Tính chất",
+            examples: [
+                { word: "importance", translation: "tầm quan trọng" },
+                { word: "independence", translation: "sự độc lập" },
+                { word: "reliance", translation: "sự tin cậy" },
+                { word: "persistence", translation: "sự kiên trì" },
+                { word: "attendance", translation: "sự tham dự" }
+            ]
+        },
+        {
+            affix: "-dom",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ trạng thái, quyền lực hoặc nơi chốn",
+            group: "Trạng thái, Phẩm chất, Tính chất",
+            examples: [
+                { word: "freedom", translation: "tự do" },
+                { word: "kingdom", translation: "vương quốc" },
+                { word: "wisdom", translation: "sự khôn ngoan" },
+                { word: "boredom", translation: "sự buồn chán" },
+                { word: "stardom", translation: "sự nổi tiếng" }
+            ]
+        },
+        {
+            affix: "-ism",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ học thuyết, chủ nghĩa hoặc hệ thống lý thuyết",
+            group: "Học thuyết, Khoa học, Hệ thống",
+            examples: [
+                { word: "capitalism", translation: "chủ nghĩa tư bản" },
+                { word: "socialism", translation: "chủ nghĩa xã hội" },
+                { word: "realism", translation: "chủ nghĩa hiện thực" },
+                { word: "feminism", translation: "chủ nghĩa nữ quyền" },
+                { word: "atheism", translation: "chủ nghĩa vô thần" }
+            ]
+        },
+        {
+            affix: "-acy",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ trạng thái hoặc chất lượng",
+            group: "Trạng thái, Phẩm chất, Tính chất",
+            examples: [
+                { word: "democracy", translation: "dân chủ" },
+                { word: "privacy", translation: "sự riêng tư" },
+                { word: "accuracy", translation: "độ chính xác" },
+                { word: "literacy", translation: "khả năng đọc viết" },
+                { word: "advocacy", translation: "sự ủng hộ" }
+            ]
+        },
+        {
+            affix: "-arian",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ người có niềm tin hoặc độ tuổi nhất định",
+            group: "Chỉ người, Nghề nghiệp",
+            examples: [
+                { word: "vegetarian", translation: "người ăn chay" },
+                { word: "humanitarian", translation: "nhà nhân đạo" },
+                { word: "libertarian", translation: "người theo chủ nghĩa tự do" },
+                { word: "parliamentarian", translation: "nghị sĩ" },
+                { word: "disciplinarian", translation: "người theo kỷ luật" }
+            ]
+        },
+        {
+            affix: "-ology",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ học thuyết, môn khoa học nghiên cứu",
+            group: "Học thuyết, Khoa học, Hệ thống",
+            examples: [
+                { word: "biology", translation: "sinh học" },
+                { word: "psychology", translation: "tâm lý học" },
+                { word: "geology", translation: "địa chất học" },
+                { word: "anthropology", translation: "nhân loại học" },
+                { word: "mythology", translation: "thần thoại học" }
+            ]
+        },
+        {
+            affix: "-ent/ant",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ người hoặc vật thực hiện hành động",
+            group: "Chỉ người, Nghề nghiệp",
+            examples: [
+                { word: "student", translation: "học sinh" },
+                { word: "assistant", translation: "trợ lý" },
+                { word: "president", translation: "chủ tịch" },
+                { word: "accountant", translation: "kế toán" },
+                { word: "agent", translation: "đại lý" }
+            ]
+        },
+        {
+            affix: "-ee",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ người nhận hành động",
+            group: "Chỉ người, Nghề nghiệp",
+            examples: [
+                { word: "employee", translation: "nhân viên" },
+                { word: "trainee", translation: "thực tập sinh" },
+                { word: "referee", translation: "trọng tài" },
+                { word: "interviewee", translation: "người được phỏng vấn" },
+                { word: "attendee", translation: "người tham dự" }
+            ]
+        },
+        {
+            affix: "-ery",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ nơi chốn, sản phẩm hoặc trạng thái",
+            group: "Trạng thái, Phẩm chất, Tính chất",
+            examples: [
+                { word: "bakery", translation: "tiệm bánh" },
+                { word: "brewery", translation: "nhà máy bia" },
+                { word: "scenery", translation: "phong cảnh" },
+                { word: "robbery", translation: "vụ cướp" },
+                { word: "slavery", translation: "chế độ nô lệ" }
+            ]
+        },
+        {
+            affix: "-ess",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ nữ giới",
+            group: "Chỉ người, Nghề nghiệp",
+            examples: [
+                { word: "actress", translation: "nữ diễn viên" },
+                { word: "princess", translation: "công chúa" },
+                { word: "goddess", translation: "nữ thần" },
+                { word: "waitress", translation: "nữ phục vụ" },
+                { word: "lioness", translation: "sư tử cái" }
+            ]
+        },
+        {
+            affix: "-age",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ hành động, quá trình hoặc số lượng",
+            group: "Trạng thái, Quá trình, Hành động",
+            examples: [
+                { word: "marriage", translation: "hôn nhân" },
+                { word: "passage", translation: "đoạn văn, sự đi qua" },
+                { word: "storage", translation: "kho lưu trữ" },
+                { word: "damage", translation: "thiệt hại" },
+                { word: "luggage", translation: "hành lý" }
+            ]
+        },
+        {
+            affix: "-ity",
+            level: "Cơ bản",
+            wordClass: "Danh từ",
+            type: "Hậu tố",
+            meaning: "chỉ trạng thái hoặc chất lượng",
+            group: "Trạng thái, Phẩm chất, Tính chất",
+            examples: [
+                { word: "ability", translation: "khả năng" },
+                { word: "reality", translation: "thực tế" },
+                { word: "activity", translation: "hoạt động" },
+                { word: "creativity", translation: "sự sáng tạo" },
+                { word: "flexibility", translation: "sự linh hoạt" }
+            ]
+        },
+        {
+            affix: "-ive",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Hậu tố",
+            meaning: "có tính chất hoặc mang xu hướng của",
+            group: "Có tính chất của, Liên quan đến",
+            examples: [
+                { word: "active", translation: "năng động" },
+                { word: "creative", translation: "sáng tạo" },
+                { word: "supportive", translation: "hỗ trợ" },
+                { word: "productive", translation: "hiệu quả" },
+                { word: "sensitive", translation: "nhạy cảm" }
+            ]
+        },
+        {
+            affix: "-cal/ -ical",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Hậu tố",
+            meaning: "liên quan đến hoặc có tính chất của",
+            group: "Có tính chất của, Liên quan đến",
+            examples: [
+                { word: "logical", translation: "hợp lý" },
+                { word: "musical", translation: "thuộc về âm nhạc" },
+                { word: "historical", translation: "thuộc về lịch sử" },
+                { word: "technical", translation: "kỹ thuật" },
+                { word: "practical", translation: "thực tế" }
+            ]
+        },
+        {
+            affix: "un-",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Tiền tố",
+            meaning: "không hoặc ngược lại",
+            group: "Phủ định, Không, Ngược lại",
+            examples: [
+                { word: "unhappy", translation: "không hạnh phúc" },
+                { word: "uncertain", translation: "không chắc chắn" },
+                { word: "unlock", translation: "mở khóa" },
+                { word: "untidy", translation: "bừa bộn" },
+                { word: "unfair", translation: "không công bằng" }
+            ]
+        },
+        {
+            affix: "im-",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Tiền tố",
+            meaning: "không hoặc ngược lại (thường đứng trước b, m, p)",
+            group: "Phủ định, Không, Ngược lại",
+            examples: [
+                { word: "impossible", translation: "không thể" },
+                { word: "immature", translation: "chưa chín chắn" },
+                { word: "impolite", translation: "bất lịch sự" },
+                { word: "impatient", translation: "thiếu kiên nhẫn" },
+                { word: "imperfect", translation: "không hoàn hảo" }
+            ]
+        },
+        {
+            affix: "in-",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Tiền tố",
+            meaning: "không hoặc ngược lại",
+            group: "Phủ định, Không, Ngược lại",
+            examples: [
+                { word: "inactive", translation: "không hoạt động" },
+                { word: "inadequate", translation: "không đầy đủ" },
+                { word: "invisible", translation: "vô hình" },
+                { word: "insecure", translation: "không an toàn" },
+                { word: "incomplete", translation: "chưa hoàn thành" }
+            ]
+        },
+        {
+            affix: "-ful",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Hậu tố",
+            meaning: "đầy đủ hoặc có nhiều tính chất",
+            group: "Đầy đủ, Có nhiều",
+            examples: [
+                { word: "joyful", translation: "vui vẻ" },
+                { word: "hopeful", translation: "hy vọng" },
+                { word: "helpful", translation: "hữu ích" },
+                { word: "beautiful", translation: "đẹp" },
+                { word: "powerful", translation: "mạnh mẽ" }
+            ]
+        },
+        {
+            affix: "-less",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Hậu tố",
+            meaning: "không có hoặc thiếu thốn",
+            group: "Phủ định, Không, Ngược lại",
+            examples: [
+                { word: "hopeless", translation: "vô vọng" },
+                { word: "useless", translation: "vô dụng" },
+                { word: "careless", translation: "bất cẩn" },
+                { word: "fearless", translation: "không sợ hãi" },
+                { word: "homeless", translation: "vô gia cư" }
+            ]
+        },
+        {
+            affix: "-ous/ious",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Hậu tố",
+            meaning: "có tính chất của, chứa đựng",
+            group: "Có tính chất của, Liên quan đến",
+            examples: [
+                { word: "famous", translation: "nổi tiếng" },
+                { word: "dangerous", translation: "nguy hiểm" },
+                { word: "glorious", translation: "vinh quang" },
+                { word: "curious", translation: "tò mờ" },
+                { word: "victorious", translation: "chiến thắng" }
+            ]
+        },
+        {
+            affix: "-ic",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Hậu tố",
+            meaning: "có tính chất hoặc liên quan đến",
+            group: "Có tính chất của, Liên quan đến",
+            examples: [
+                { word: "poetic", translation: "thuộc về thơ ca" },
+                { word: "historic", translation: "thuộc về lịch sử" },
+                { word: "athletic", translation: "thuộc về thể thao" },
+                { word: "artistic", translation: "thuộc về nghệ thuật" },
+                { word: "scientific", translation: "thuộc về khoa học" }
+            ]
+        },
+        {
+            affix: "-al",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Hậu tố",
+            meaning: "thuộc về hoặc liên quan đến",
+            group: "Có tính chất của, Liên quan đến",
+            examples: [
+                { word: "natural", translation: "tự nhiên" },
+                { word: "cultural", translation: "thuộc về văn hóa" },
+                { word: "national", translation: "thuộc về quốc gia" },
+                { word: "personal", translation: "cá nhân" },
+                { word: "professional", translation: "chuyên nghiệp" }
+            ]
+        },
+        {
+            affix: "-y",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Hậu tố",
+            meaning: "có tính chất của hoặc nhiều gì đó",
+            group: "Có tính chất của, Liên quan đến",
+            examples: [
+                { word: "sunny", translation: "nắng" },
+                { word: "windy", translation: "gió" },
+                { word: "rainy", translation: "mưa" },
+                { word: "snowy", translation: "tuyết" },
+                { word: "lucky", translation: "may mắn" }
+            ]
+        },
+        {
+            affix: "-able/ible",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Hậu tố",
+            meaning: "có khả năng, có thể làm được gì",
+            group: "Có khả năng, Có thể",
+            examples: [
+                { word: "readable", translation: "có thể đọc" },
+                { word: "understandable", translation: "có thể hiểu" },
+                { word: "acceptable", translation: "chấp nhận được" },
+                { word: "visible", translation: "có thể thấy" },
+                { word: "flexible", translation: "linh hoạt" }
+            ]
+        },
+        {
+            affix: "-like",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Hậu tố",
+            meaning: "chỉ sự giống như hoặc tương tự",
+            group: "Giống như, Tương tự",
+            examples: [
+                { word: "childlike", translation: "như trẻ con" },
+                { word: "lifelike", translation: "như thật" },
+                { word: "birdlike", translation: "như chim" },
+                { word: "dreamlike", translation: "như mơ" }
+            ]
+        },
+        {
+            affix: "a-",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Tiền tố",
+            meaning: "chỉ sự không hoặc thiếu thốn",
+            group: "Phủ định, Không, Ngược lại",
+            examples: [
+                { word: "amoral", translation: "không đạo đức" },
+                { word: "atheist", translation: "vô thần" },
+                { word: "asymmetrical", translation: "không đối xứng" },
+                { word: "atypical", translation: "không điển hình" },
+                { word: "achromatic", translation: "không màu" }
+            ]
+        },
+        {
+            affix: "ir-",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Tiền tố",
+            meaning: "không hoặc ngược lại (thường dùng trước r)",
+            group: "Phủ định, Không, Ngược lại",
+            examples: [
+                { word: "irregular", translation: "không đều" },
+                { word: "irresponsible", translation: "thiếu trách nhiệm" },
+                { word: "irresistible", translation: "không thể cưỡng lại" },
+                { word: "irrational", translation: "phi lý" },
+                { word: "irrelevant", translation: "không liên quan" }
+            ]
+        },
+        {
+            affix: "il-",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Tiền tố",
+            meaning: "không hoặc ngược lại (thường dùng trước l)",
+            group: "Phủ định, Không, Ngược lại",
+            examples: [
+                { word: "illegal", translation: "bất hợp pháp" },
+                { word: "illogical", translation: "không hợp lý" },
+                { word: "illiterate", translation: "mù chữ" },
+                { word: "illegible", translation: "khó đọc" }
+            ]
+        },
+        {
+            affix: "-eous",
+            level: "Cơ bản",
+            wordClass: "Tính từ",
+            type: "Hậu tố",
+            meaning: "có tính chất hoặc giống như",
+            group: "Có tính chất của, Liên quan đến",
+            examples: [
+                { word: "courageous", translation: "dũng cảm" },
+                { word: "spontaneous", translation: "tự phát" },
+                { word: "homogeneous", translation: "đồng nhất" },
+                { word: "heterogeneous", translation: "không đồng nhất" },
+                { word: "aqueous", translation: "thuộc về nước" }
+            ]
+        },
+        {
+            affix: "-ly",
+            level: "Cơ bản",
+            wordClass: "Trạng từ",
+            type: "Hậu tố",
+            meaning: "chỉ trạng thái hoặc cách thức hành động",
+            group: "Trạng thái, Cách thức",
+            examples: [
+                { word: "quickly", translation: "nhanh chóng" },
+                { word: "happily", translation: "hạnh phúc" },
+                { word: "slowly", translation: "chậm chạp" },
+                { word: "softly", translation: "nhẹ nhàng" },
+                { word: "clearly", translation: "rõ ràng" }
+            ]
+        },
+        // BỔ SUNG GỐC TỪ (ROOTS) ĐỂ TĂNG TÍNH ĐẦY ĐỦ CHO CÔNG CỤ
+        {
+            affix: "bio-",
+            level: "Cơ bản",
+            wordClass: "Nhiều dạng",
+            type: "Gốc từ",
+            meaning: "liên quan đến sự sống hoặc sinh vật",
+            group: "Học thuyết, Khoa học, Hệ thống",
+            examples: [
+                { word: "biology", translation: "sinh học" },
+                { word: "biography", translation: "tiểu sử" },
+                { word: "biosphere", translation: "sinh quyển" }
+            ]
+        },
+        {
+            affix: "geo-",
+            level: "Cơ bản",
+            wordClass: "Nhiều dạng",
+            type: "Gốc từ",
+            meaning: "liên quan đến Trái đất hoặc địa lý",
+            group: "Học thuyết, Khoa học, Hệ thống",
+            examples: [
+                { word: "geology", translation: "địa chất học" },
+                { word: "geography", translation: "địa lý" },
+                { word: "geometry", translation: "hình học" }
+            ]
+        },
+        {
+            affix: "tele-",
+            level: "Cơ bản",
+            wordClass: "Nhiều dạng",
+            type: "Gốc từ",
+            meaning: "ở khoảng cách xa",
+            group: "Vị trí, Khoảng cách",
+            examples: [
+                { word: "telephone", translation: "điện thoại" },
+                { word: "television", translation: "truyền hình (tivi)" },
+                { word: "telescope", translation: "kính viễn vọng" }
+            ]
+        }
+    ];
+
+    // Khởi tạo ứng dụng
+    document.addEventListener("DOMContentLoaded", () => {
+        populateGroups();
+        renderCards(dataset);
+
+        // Đăng ký sự kiện lọc dữ liệu
+        document.getElementById("searchInput").addEventListener("input", filterData);
+        document.getElementById("typeFilter").addEventListener("change", filterData);
+        document.getElementById("classFilter").addEventListener("change", filterData);
+        document.getElementById("groupFilter").addEventListener("change", filterData);
+    });
+
+    // Lấy danh sách nhóm ý nghĩa duy nhất và đưa vào ô lọc
+    function populateGroups() {
+        const groups = [...new Set(dataset.map(item => item.group))].sort();
+        const groupSelect = document.getElementById("groupFilter");
+        
+        groups.forEach(group => {
+            const option = document.createElement("option");
+            option.value = group;
+            option.textContent = group;
+            groupSelect.appendChild(option);
+        });
+    }
+
+    // Hiển thị danh sách thẻ
+    function renderCards(data) {
+        const container = document.getElementById("cardsContainer");
+        container.innerHTML = "";
+
+        if (data.length === 0) {
+            container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 40px 0;">Không tìm thấy kết quả phù hợp.</p>`;
+            document.getElementById("resultsCount").textContent = "0 kết quả";
+            return;
+        }
+
+        document.getElementById("resultsCount").textContent = `${data.length} kết quả được tìm thấy`;
+
+        data.forEach(item => {
+            const card = document.createElement("div");
+            card.className = "card";
+
+            // Xác định class cho badge dựa vào loại tiền/hậu/gốc từ
+            let typeBadgeClass = "badge-prefix";
+            if (item.type === "Hậu tố") typeBadgeClass = "badge-suffix";
+            if (item.type === "Gốc từ") typeBadgeClass = "badge-root";
+
+            const examplesHTML = item.examples.map(ex => `
+                <li class="example-item">
+                    <span class="example-word">${ex.word}</span>
+                    <span class="example-translation">(${ex.translation})</span>
+                </li>
+            `).join('');
+
+            card.innerHTML = `
+                <div>
+                    <div class="card-header">
+                        <span class="affix-title">${item.affix}</span>
+                        <div class="badge-container">
+                            <span class="badge ${typeBadgeClass}">${item.type}</span>
+                            <span class="badge badge-class">${item.wordClass}</span>
+                        </div>
+                    </div>
+                    <div class="group-tag" onclick="filterByGroup('${item.group}')">Mục tiêu: ${item.group}</div>
+                    <div class="meaning-box">
+                        <div class="meaning-label">Ý nghĩa</div>
+                        <div class="meaning-text">${item.meaning}</div>
+                    </div>
+                </div>
+                <div>
+                    <div style="font-size: 0.85rem; font-weight: bold; margin-bottom: 8px; color: var(--text-muted); text-transform: uppercase;">Ví dụ minh họa:</div>
+                    <ul class="examples-list">
+                        ${examplesHTML}
+                    </ul>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // Bộ lọc thông minh
+    function filterData() {
+        const searchVal = document.getElementById("searchInput").value.toLowerCase().trim();
+        const typeVal = document.getElementById("typeFilter").value;
+        const classVal = document.getElementById("classFilter").value;
+        const groupVal = document.getElementById("groupFilter").value;
+
+        const filtered = dataset.filter(item => {
+            // Lọc theo từ khóa tìm kiếm
+            const matchesSearch = !searchVal || 
+                item.affix.toLowerCase().includes(searchVal) || 
+                item.meaning.toLowerCase().includes(searchVal) || 
+                item.examples.some(ex => ex.word.toLowerCase().includes(searchVal) || ex.translation.toLowerCase().includes(searchVal));
+
+            // Lọc theo Loại
+            const matchesType = typeVal === "all" || item.type === typeVal;
+
+            // Lọc theo Loại từ tạo ra
+            const matchesClass = classVal === "all" || item.wordClass === classVal;
+
+            // Lọc theo Nhóm ý nghĩa
+            const matchesGroup = groupVal === "all" || item.group === groupVal;
+
+            return matchesSearch && matchesType && matchesClass && matchesGroup;
+        });
+
+        renderCards(filtered);
+    }
+
+    // Nhấp vào tag nhóm ý nghĩa để lọc nhanh
+    function filterByGroup(groupName) {
+        document.getElementById("groupFilter").value = groupName;
+        filterData();
+    }
+
+    // Đặt lại toàn bộ bộ lọc
+    function resetFilters() {
+        document.getElementById("searchInput").value = "";
+        document.getElementById("typeFilter").value = "all";
+        document.getElementById("classFilter").value = "all";
+        document.getElementById("groupFilter").value = "all";
+        filterData();
+    }
+
+    // Chuyển đổi giữa các tab (Tra cứu & Trắc nghiệm)
+    function switchTab(tabId) {
+        document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+        document.getElementById("study-tab").classList.add("hidden");
+        document.getElementById("practice-tab").classList.add("hidden");
+
+        if (tabId === "study") {
+            document.querySelectorAll(".tab-btn")[0].classList.add("active");
+            document.getElementById("study-tab").classList.remove("hidden");
+        } else {
+            document.querySelectorAll(".tab-btn")[1].classList.add("active");
+            document.getElementById("practice-tab").classList.remove("hidden");
+            generateQuestion();
+        }
+    }
+
+    // LOGIC TRẮC NGHIỆM (QUIZ)
+    let currentCorrectAnswer = "";
+
+    function generateQuestion() {
+        const feedbackDiv = document.getElementById("quizFeedback");
+        const nextBtn = document.getElementById("nextBtn");
+        feedbackDiv.textContent = "";
+        nextBtn.classList.add("hidden");
+
+        // Chọn ngẫu nhiên một câu hỏi từ dataset
+        const target = dataset[Math.floor(Math.random() * dataset.length)];
+        
+        // 50% cơ hội hỏi "Ý nghĩa của [X] là gì?" và 50% hỏi "[X] có nghĩa là '[Ý nghĩa]', vậy [X] là gì?"
+        const askMeaning = Math.random() > 0.5;
+        let questionText = "";
+        let correctAnswer = "";
+        let wrongAnswers = [];
+
+        if (askMeaning) {
+            questionText = `Thành phần <strong>"${target.affix}"</strong> (${target.type}) thường có ý nghĩa là gì?`;
+            correctAnswer = target.meaning;
+            
+            // Lấy các ý nghĩa khác làm nhiễu
+            wrongAnswers = dataset
+                .filter(item => item.meaning !== correctAnswer)
+                .map(item => item.meaning);
+        } else {
+            questionText = `Thành phần nào dưới đây mang ý nghĩa: <strong>"${target.meaning}"</strong>?`;
+            correctAnswer = target.affix;
+            
+            // Lấy các thành phần khác làm nhiễu
+            wrongAnswers = dataset
+                .filter(item => item.affix !== correctAnswer)
+                .map(item => item.affix);
+        }
+
+        // Lấy 3 đáp án sai ngẫu nhiên không trùng lặp
+        wrongAnswers = [...new Set(wrongAnswers)];
+        wrongAnswers.sort(() => 0.5 - Math.random());
+        const options = wrongAnswers.slice(0, 3);
+        options.push(correctAnswer);
+        options.sort(() => 0.5 - Math.random()); // Trộn đáp án đúng vào
+
+        currentCorrectAnswer = correctAnswer;
+
+        // Hiển thị câu hỏi
+        document.getElementById("quizQuestion").innerHTML = questionText;
+        
+        // Hiển thị các nút lựa chọn
+        const optionsDiv = document.getElementById("quizOptions");
+        optionsDiv.innerHTML = "";
+        options.forEach(opt => {
+            const btn = document.createElement("button");
+            btn.className = "option-btn";
+            btn.textContent = opt;
+            btn.onclick = () => checkAnswer(btn, opt);
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedBtn, selectedOption) {
+        const buttons = document.querySelectorAll(".option-btn");
+        const feedbackDiv = document.getElementById("quizFeedback");
+        const nextBtn = document.getElementById("nextBtn");
+
+        // Vô hiệu hóa tất cả các nút để không bấm lại
+        buttons.forEach(btn => btn.disabled = true);
+
+        if (selectedOption === currentCorrectAnswer) {
+            selectedBtn.classList.add("correct");
+            feedbackDiv.innerHTML = `<span style="color: #10b981;">Chính xác! Bạn đã trả lời đúng.</span>`;
+        } else {
+            selectedBtn.classList.add("incorrect");
+            // Hiển thị đáp án đúng
+            buttons.forEach(btn => {
+                if (btn.textContent === currentCorrectAnswer) {
+                    btn.classList.add("correct");
+                }
+            });
+            feedbackDiv.innerHTML = `<span style="color: #ef4444;">Chưa chính xác. Đáp án đúng là: ${currentCorrectAnswer}</span>`;
+        }
+
+        nextBtn.classList.remove("hidden");
+    }
+</script>
+
+</body>
+</html>
